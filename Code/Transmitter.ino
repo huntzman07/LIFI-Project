@@ -1,12 +1,10 @@
 #define LASERPIN 13
+
 void setup() {
   pinMode(LASERPIN, OUTPUT);
-
-  // put your setup code here, to run once:
-
 }
 
-void loop() {//01011001
+void loop() {  
   int bits[]= {LOW,HIGH,LOW,HIGH,HIGH,LOW,LOW,HIGH};
   digitalWrite(LASERPIN,HIGH);
   delay(10);
@@ -14,10 +12,7 @@ void loop() {//01011001
   for(int i=0;i<8;i++){
     digitalWrite(LASERPIN,bits[i]);
     delay(10);
-
   }
   digitalWrite(LASERPIN,LOW);
   delay(1000);
-  // put your main code here, to run repeatedly:
-
 }
