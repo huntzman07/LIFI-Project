@@ -1,0 +1,66 @@
+LiFi Based 8-Bit Serial Communication Using Arduino
+
+1. Introduction
+
+Light Fidelity (LiFi) is a wireless communication technology that uses visible light for data transmission. Unlike conventional RF systems, LiFi employs light sources such as LEDs to transmit data, and light sensors such as photodiodes or LDRs to receive it. This project demonstrates a basic LiFi communication link that transmits an 8-bit binary number using visible light, where each bit is represented as a HIGH (1) or LOW (0) state. The transmitter Arduino modulates data through an LED, and the receiver Arduino decodes the light signal using a photodiode and reconstructs the original 8-bit number via serial output.
+
+2. Objective
+
+To design and implement a LiFi communication system capable of transmitting an 8-bit binary number using visible light, where binary ‘1’ is encoded as LED ON (HIGH) and binary ‘0’ as LED OFF (LOW), and decode the same at the receiver end using Arduino.
+
+3. Methodology
+
+An 8-bit binary number is either predefined or sent via serial input to the transmitter Arduino. The transmitter reads each bit sequentially and modulates an LED accordingly using digital ON-OFF keying. The LED driver ensures stable illumination and switching speed. The receiver section uses a photodiode in reverse bias configuration to detect light intensity variations. The Arduino reads the sensor output and determines whether the received bit is 1 or 0 based on a threshold value. Once 8 bits are received, they are combined into a byte and displayed on the Serial Monitor.
+
+4. System Architecture
+
+Transmitter block: Arduino → LED modulation pin → LED driver → LED light output.
+
+Receiver block: LED light → Photodiode sensor → Signal threshold detection → Arduino → Serial output.
+
+The laptop is used only for uploading code and observing serial output from the receiver Arduino.
+
+5. Hardware Components
+
+Arduino Uno (2 units), LED (white or high-brightness), Photodiode (e.g., BPW34 or equivalent), Resistors, Transistor LED driver circuit, Power supply, Connecting wires, Breadboard.
+
+6. Software Tools
+
+Arduino IDE for programming and serial monitoring.
+
+7. Working Principle
+
+The system uses ON-OFF keying (OOK) modulation via visible light. The transmitter sends 8 bits with a fixed delay per bit. The receiver samples the photodiode output at synchronized intervals, determines bit values, reconstructs a byte, and prints it through UART to the connected laptop. The light channel serves as the communication medium replacing traditional wired or RF links.
+
+8. Results
+
+The receiver Arduino successfully reconstructs and prints the transmitted 8-bit binary number through serial communication. The system demonstrates reliable short-range wireless data transfer using visible light without external communication modules.
+
+9. Key Findings
+
+Visible light can be effectively used as a data transmission medium for digital communication at short distances. Arduino GPIO pins are sufficient for implementing 8-bit LiFi modulation using OOK. Photodiode reverse bias configuration provides stable light detection for digital thresholding. The project eliminates the need for RF modules, reducing electromagnetic interference in the communication link. The system works reliably under controlled ambient light conditions. The design can be extended to transmit larger data packets or encoded signals.
+
+10. Limitations
+
+Communication range is limited by LED brightness and sensor sensitivity. Ambient light noise may affect decoding accuracy if thresholding is not tuned properly. Bit synchronization is delay-dependent and not clock-driven.
+
+11. Future Enhancements
+
+Implement clock-synchronized sampling for improved reliability. Introduce error detection using parity or checksum. Replace photodiode stage with an amplifier for higher range. Extend system to transmit ASCII or sensor data streams.
+
+12. Conclusion
+
+The project successfully implements a LiFi communication system that transmits and receives 8-bit binary data using visible light modulation. The system proves that LiFi can be used as a low-cost, interference-free alternative for short-range serial communication using Arduino, making it suitable for academic and embedded system applications.
+
+13. References
+
+LiFi Communication Overview – IEEE Xplore. Arduino Serial Communication – Official Arduino Documentation. Visible Light Communication Principles – Research Publications.
+
+14. Code Attachment
+
+Transmitter Arduino code file: `Transmitter.ino` (uploaded).
+Receiver Arduino code file: `Receiver.ino` (uploaded).
+
+Project by:
+Yogeshwer P
+Electronics and Communication Engineering Student
